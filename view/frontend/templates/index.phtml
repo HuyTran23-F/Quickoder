@@ -1,0 +1,34 @@
+<?php
+
+/** @var \AHT\SaleAgent\Block\Template $block */
+?>
+
+<div id='quickorder_template' data-bind="scope: 'quickorder'">
+    <!-- ko template: getTemplate() -->
+    <!-- /ko  -->
+    <script type="text/x-magento-init">
+        {
+        "#quickorder_template": {
+            "Magento_Ui/js/core/app": {
+                "components": {
+                    "quickorder": {
+                        "component": "AHT_QuickOrder/js/quickorder",
+                        "template" : "AHT_QuickOrder/quickorder"
+                    }
+                }
+            }
+        }
+    }
+</script>
+</div>
+
+
+<script>
+    require([
+        'mage/url',
+        'Magento_Ui/js/block-loader'
+    ], function(url, blockLoader) {
+        blockLoader("<?php /* @escapeNotVerified */ echo $block->getViewFileUrl('images/loader-1.gif'); ?>");
+        return url.setBaseUrl('<?php /* @escapeNotVerified */ echo $block->getBaseUrl(); ?>');
+    })
+</script>
